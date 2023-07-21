@@ -1,0 +1,53 @@
+  <br>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-danger" (click)="logout()">Déconnexion</button>
+  </div>
+  
+
+  <div class="container mt-4" >
+    <div class="card">
+            <h1>Publier un article</h1>
+    
+    <form>
+        <div class="form-group">
+          <label> Titre</label>
+          <input type="text" [(ngModel)]="titre" [ngModelOptions]="{standalone: true}" class="form-control" id="titre" placeholder="Entrez le titre">
+        </div>
+
+        <div class="form-group">
+            <label> Contenu</label>
+            <input type="text" [(ngModel)]="contenu" [ngModelOptions]="{standalone: true}" class="form-control" id="contenu" placeholder="Entrez le contenu">
+          </div>
+
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Publier</button>
+      </form>
+    </div>
+    
+        <div class="container mt-4" >
+            <h1>Liste d'articles</h1>
+        <table class="table">
+            <thead>    
+            <tr>
+                <th scope="col">titre</th>  
+                <th scope="col">contenu</th>  
+                <th scope="col">derniere modif</th>  
+                <th scope="col">utilisateur id</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let articleItem of ArticleArray">
+                <td>{{articleItem.titre }}</td>
+                <td>{{articleItem.contenu }}</td>
+                <td>{{articleItem.datemodif  | date:'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{articleItem.nom_utilisateur}}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(articleItem)">Modifier</button>
+                  <button type="button" class="btn btn-danger" (click)="setDelete(articleItem)">Supprimer</button>   <br> 
+                  <button type="button" class="btn btn-outline-info" (click)="jaimes(articleItem)">
+                    {{ articleItem.liked ? 'Aimé' : 'J\'aime' }}
+                  </button>
+                                  </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>

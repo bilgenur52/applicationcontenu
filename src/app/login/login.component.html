@@ -1,0 +1,28 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+      <h1><em>Bienvenue dans app contenu</em></h1><br>
+  
+      <form>
+        <!-- name input -->
+        <div class="form-outline mb-4">
+          <input type="name" id="form2Example1" class="form-control" placeholder="Entrez votre nom" [(ngModel)]="nom" [ngModelOptions]="{standalone: true}" required />
+        </div>
+  
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <input type="password" id="form2Example2" class="form-control" placeholder="Entrez votre mot de passe" [(ngModel)]="mot_de_passe" [ngModelOptions]="{standalone: true}" required />
+        </div>
+  
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4" (click)="connexion()">Se connecter</button>
+      </form>
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p>Vous n'avez pas de compte ? <button class="btn btn-link" routerLink="/register">Inscrivez-vous</button></p>
+      </div>
+    </div>
+  </div>
+  
